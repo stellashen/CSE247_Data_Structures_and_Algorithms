@@ -10,7 +10,12 @@ public class OurGrowth1 extends Rarrays {
 	 * Try some function you think will work here.
 	 */
 	public int getNewSize() {
-		throw new Error("You must implement this function");
+		//throw new Error("You must implement this function");
+		int newsize = (int) (array.length*1.1);
+		if (newsize-array.length<1){
+			newsize = array.length+1;
+		}
+		return newsize;
 	}
 	
 	public String toString() { return "Grow by our own function (1)"; }

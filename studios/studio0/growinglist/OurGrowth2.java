@@ -10,7 +10,8 @@ public class OurGrowth2 extends Rarrays {
 	 * Try some function you think will work here.
 	 */
 	public int getNewSize() {
-		throw new Error("You must implement this function");
+		//throw new Error("You must implement this function");
+		return array.length+20;
 	}
 	
 	public String toString() { return "Grow by multiplying by 10"; }
