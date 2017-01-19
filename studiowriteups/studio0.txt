@@ -101,10 +101,11 @@ Question D1:
 	
 Question E1:
 	What is the closed form solution for T(n)?
+	(n+1)n/2.
 	
 Question E2:
 	What is the closed form solution for T(n)?
 	Can you express this result in terms of n, as well as k?
 	Write your answer here:
-	
+	2^k - 1 = n - 1.
 	
