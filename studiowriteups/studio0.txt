@@ -1,13 +1,13 @@
 Your TA's name:
-
+Nan Baker
 
 
 Students in your studio group:
 
     Name        Student ID (begins with a 4)
 	
-1.
-2.
+1.Guanlan Dong	443859
+2.Yangchen Shen 439908
 3.
 4.
 5.
@@ -17,45 +17,65 @@ Below each question, type in your short, to-the-point answers.
 
 Question A1: 
 	What do you see in both plots? 
+	A curve.
 	Are there any differences between the two?
+	Ticks curve is more smooth.
 	What could account for those differences?
+	Time includes other operations on the computer.
 	
 Discuss this (and all your responses for this assignment) with your TA as you go.
 
 Question A2:
 	Why do the times provided for Quadratic produce such a nice plot, while the original values of Linear did not?
+	The times to run linear are too small but they actually have the same shape as the quadratic plot.
 	
 Question A3: 
 	From the runs you have tried so far, how does the placement of ticker.tick() calls affect the plots you see? 
 	In particular, do the changes affect the shapes of the curves, the values plotted, or both
+	It will affect the values, sometimes the shapes: 
+	if no ticker.tick() is placed inside the j loop, it will be linear; otherwise it will be quadratic.
 	
 Question A4: 
 	In terms of n, how would you characterize, in the most simple terms, 
 	the time and ticks curves that have been generated so far?
-		
+	time curve: close to n^2
+	ticks curve: n^2
+	
 Question A5: 
 	What would happen if you deleted all ticker.tick() calls in the innermost loop,
 	while leaving other calls to ticker.tick() that you just placed in run()?
+	Curves would be linear.
 	
 Question B1:
 	What do you see? How do the curves reflect the code inside AddsTwoNumbers?
+	Values don't change with changes in n.
+
 	Do you think the value of n matters here in terms of the time it takes to perform the operation?
 	Why or why not?
 	
+	Doesn't matter because the number of time the loop runs is not affected by n. Instead, it's constant: 100000000.
+	
 Question B2:
 	What do the data and plot tell you about the time it takes to allocate an array of n integers?
+	It's linear.
+	
 	Is it reasonable to say that the line of code
 
  		this.array = new int[this.n]
  		
 	takes a constant amount of time, independent of the value of this.n?
 	
+	No. It's larger as n increases.
+	
 Question B3:
 	Do the ticks agree in shape with the time we measured in running the Allocates code?
+	No.
 	
 Question B4:
 	Are the plots more similar to each other than before?
+	Yes.
 	What does this tell you about how much time it takes to allocate an array of n integers?
+	The time depends on n.
 	
 Question B5:
 	Which group do you expect to finish first?
@@ -69,10 +89,15 @@ Question B5:
 		
 	If you are not sure, take a look the link from the assignment web page.
 	
+	The decimal group will finish first. Decimal group: 1; Tally mark group: n.
+	Decimal notation is more efficient when we need to describe a constant number.
+	Tally mark notation is more efficient when we need to continue counting the number.
+	
 Question D1:
 	How would you describe the curve you see?
 	As a team, think about possible polynomial functions that could generate such a curve.
 	Write your answer here:
+	Quadratic. n^2.
 	
 Question E1:
 	What is the closed form solution for T(n)?
