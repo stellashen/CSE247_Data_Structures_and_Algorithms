@@ -1,4 +1,4 @@
-package lecture0;
+package lecture1;
 
 import timing.ExecuteAlgorithm;
 import timing.Ticker;
