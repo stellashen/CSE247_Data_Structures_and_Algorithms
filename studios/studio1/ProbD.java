@@ -29,6 +29,7 @@ public class ProbD extends QuietAlgorithm {
 	 * parameter n.
 	 */
 	@Override
+	//1^2+2^2+...n^2
 	public void run() {
 		int j = 1;
 		while (j <= n) {

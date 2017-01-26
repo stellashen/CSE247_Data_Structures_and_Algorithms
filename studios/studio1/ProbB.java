@@ -29,6 +29,7 @@ public class ProbB extends QuietAlgorithm {
 	 * parameter n.
 	 */
 	@Override
+	//the sum of n-1+n-2+...+3+2+1
 	public void run() {
 		int j = 1;
 		while (j < n) {

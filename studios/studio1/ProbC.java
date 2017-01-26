@@ -29,6 +29,7 @@ public class ProbC extends QuietAlgorithm {
 	 * parameter n.
 	 */
 	@Override
+	//sum: 1+2+...n
 	public void run() {
 		int j = 0;
 		while (j <= n) {
