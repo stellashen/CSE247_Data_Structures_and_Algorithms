@@ -1,6 +1,6 @@
 Studio 3 write up
 
-Your TA's name:
+Your TA's name: Gwyneth Pearson
 
 
 
@@ -8,10 +8,10 @@ Students in your studio group:
 
     Name        Student ID (begins with a 4)
 	
-1.
-2.
-3.
-4.
+1. Yangchen Shen  439908
+2. Benji Gu       435291
+3. Huizhong Zhao	451331
+4. Theron Howe		441812
 5.
 6.
 
@@ -19,14 +19,21 @@ Students in your studio group:
 Part A
 
 What are three data types that can serve as T?
+String, Integer, Double.
 
 Which class did you pick to examine its compareTo method?
+Byte.
 
 How did its compareTo method impose a natural order on that class's instances?
+Subtract one byte from another, and 
+1) if it returns zero, then they are equal.
+2) if it returns a positive number, then the first byte is larger.
+3) if it returns a negative number, then the second byte is larger.
 
 Part B
 
 How does compareTo work?  Does it always return either -1, 0, or +1?
+It returns a negative or positive number or zero. No, not always -1,0,1.
 
 Part C
 
@@ -35,21 +42,26 @@ Given a LinkedList<T> of size n, what is the asymptotic complexity, worst-case,
 for performing each of the following operations?
 
   1)  Appending to the end of that list  addLast(..)
+  Θ(1); worst-case is 1 (constant time).
   
   2)  Prepending to the beginning of that list   addFirst(...)
+  Θ(1); worst-case is 1 (constant time).
   
   3)  Inserting an element in the middle of the list  add(size/2, .....)
+  O(n). n/2.
   
 And for your implementation of a PriorityQueue using the Unordered List, 
 given n elements already in the queue, what is the asymptotic complexity, 
 worst-case for performing each of the following operations?
   
   4)  extractMin
+  O(n); worst-case is n.
   
   5)  insert
+  Θ(1); worst-case is 1 (constant time).
   
   6)  isEmpty
-  
+  Θ(1); worst-case is 1 (constant time).
   
 Part D
 
