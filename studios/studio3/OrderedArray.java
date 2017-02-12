@@ -31,23 +31,16 @@ public class OrderedArray<T extends Comparable<T>> implements PriorityQueue<T> {
 
 		else{
 			int i=0;
-			while(thing.compareTo(array[i])>=0 && i<size){
+			while(thing.compareTo(array[i])>0 && i<size){
 				i++;
 			}
 
-			if(i==size-1){
-				array[size]=thing;
-				size = size+1;
+			size = size + 1;
+			//move all the elements on the right side to the next position
+			for(int j = size-1; j > i;j--){
+				array[j]=array[j-1];
 			}
-			else{
-				size = size + 1;
-				//move all the elements on the right side to the next position
-				for(int j = size-1; j > i;j--){
-					array[j]=array[j-1];
-				}
-
-				array[i]=thing;
-			}
+			array[i]=thing;
 		}
 	}
 
@@ -60,17 +53,19 @@ public class OrderedArray<T extends Comparable<T>> implements PriorityQueue<T> {
 			return null;
 		}
 		else if(size==1){
-			T head = array[0];
+			T min = array[0];
 			size = 0;
-			return head;
+			return min;
 		}
 		else{
-			T head = array[0]; 
-			for(int i=0;i<size;i++){
+			T min = array[0]; 
+			//move all elements 1 position to the left
+			//the 0th element is removed during this process
+			for(int i=0;i < size-1;i++){
 				array[i]=array[i+1];
 			}
 			size = size - 1;
-			return head;
+			return min;
 		}
 	}
 

@@ -42,49 +42,55 @@ Given a LinkedList<T> of size n, what is the asymptotic complexity, worst-case,
 for performing each of the following operations?
 
   1)  Appending to the end of that list  addLast(..)
-  Θ(1); worst-case is 1 (constant time).
+  Θ(1).
   
   2)  Prepending to the beginning of that list   addFirst(...)
-  Θ(1); worst-case is 1 (constant time).
+  Θ(1).
   
   3)  Inserting an element in the middle of the list  add(size/2, .....)
-  O(n). n/2.
+  Θ(n). 
   
 And for your implementation of a PriorityQueue using the Unordered List, 
 given n elements already in the queue, what is the asymptotic complexity, 
 worst-case for performing each of the following operations?
   
   4)  extractMin
-  O(n); worst-case is n.
+  Θ(n).
   
   5)  insert
-  Θ(1); worst-case is 1 (constant time).
+  Θ(1).
   
   6)  isEmpty
-  Θ(1); worst-case is 1 (constant time).
+  Θ(1).
   
 Part D
 
 From your implementation of OrderedArray, what is the asymptotic complexity, worst-case, for performing each of the following operations?
 
   1)  Adding an element at the end of the array
-  
+  Θ(n).
   
   2)  Inserting an element at the beginning of the array
-  
+  Θ(1).
   
   3)  Inserting an element in the middle of the list
-
+  Θ(n).
+  
 And for your implementation of a PriorityQueue using the Ordered Array, 
 given n elements already in the queue, what is the asymptotic complexity, 
 worst-case for performing each of the following operations?
   
   4)  extractMin
+  Θ(n).
   
   5)  insert
+  Θ(n).
   
   6)  isEmpty
-  
+  Θ(1).
  
  Are there situations when you would want to use the OrderedArray or the UnorderedList instead of
  the binary heap described in class?   Explain please.
+If you only need to insert/remove from the beginning/end of the list/array, 
+it takes constant time O(1), while binary heap would take O(log(n)).
+ 
