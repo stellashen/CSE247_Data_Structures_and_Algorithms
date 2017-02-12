@@ -1,5 +1,7 @@
 package studio3;
 
+import java.util.Arrays;
+
 public class OrderedArray<T extends Comparable<T>> implements PriorityQueue<T> {
 
 	public T[] array;
@@ -31,17 +33,23 @@ public class OrderedArray<T extends Comparable<T>> implements PriorityQueue<T> {
 
 		else{
 			int i=0;
-			while(thing.compareTo(array[i])>0 && i<size){
+			//don't work with compareTo first - cannot compare to null
+			//while(thing.compareTo(array[i])>&&i<size){
+			while(i<size && thing.compareTo(array[i])>0){
+				System.out.println("compareTo worked");
 				i++;
 			}
-
+			System.out.println("inserting at: " + i);
 			size = size + 1;
 			//move all the elements on the right side to the next position
+			//starting from the end of the array
 			for(int j = size-1; j > i;j--){
 				array[j]=array[j-1];
 			}
 			array[i]=thing;
 		}
+		System.out.println("insert:");
+		System.out.println(Arrays.toString(array));
 	}
 
 	@Override
@@ -59,7 +67,7 @@ public class OrderedArray<T extends Comparable<T>> implements PriorityQueue<T> {
 		}
 		else{
 			T min = array[0]; 
-			//move all elements 1 position to the left
+			//move all other elements 1 position to the left
 			//the 0th element is removed during this process
 			for(int i=0;i < size-1;i++){
 				array[i]=array[i+1];
@@ -67,6 +75,14 @@ public class OrderedArray<T extends Comparable<T>> implements PriorityQueue<T> {
 			size = size - 1;
 			return min;
 		}
+	}
+	
+	//created main to check what's wrong
+	public static void main(String[] args){
+		OrderedArray example = new OrderedArray(10);
+		System.out.println(example.isEmpty());
+		example.insert(1);
+		example.insert(2);
 	}
 
 }
