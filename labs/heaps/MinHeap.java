@@ -32,7 +32,7 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	//
 	// Here begin the methods described in lecture
 	//
-	
+
 	/**
 	 * Insert a new thing into the heap.  As discussed in lecture, it
 	 *   belongs at the end of objects already in the array.  You can avoid
@@ -66,6 +66,13 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		//
 		// FIXME
 		//
+		//Notes:
+		//1. size has already been increased above
+		//2. there is no index 0 in this array because we ignore 0 for heap 
+		array[size]=ans;
+		decrease(size);
+		ticker.tick();
+		ticker.tick();
 		return ans;
 	}
 
@@ -99,9 +106,31 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		//
 		// As described in lecture
 		//
-		
+
+		//T child = array[loc].getValue();
+		//T parent = array[loc/2].getValue();
+
+		while(loc > 1 && array[loc].getValue().compareTo(array[loc/2].getValue()) < 0){
+			//swap parent and child (using a third decreaser to store the value of parent)
+			Decreaser<T> temp = array[loc];
+			array[loc] = array[loc/2];
+			array[loc/2] = temp;
+			//update location
+			array[loc].loc = loc;
+			array[loc/2].loc = loc/2;
+			loc = loc/2;
+			ticker.tick();
+			ticker.tick();
+			ticker.tick();
+			ticker.tick();
+			ticker.tick();
+			ticker.tick();
+			ticker.tick();
+		}
+
+
 	}
-	
+
 	/**
 	 * Described in lecture, this method will return a minimum element from
 	 *    the heap.  The hole that is created is handled as described in
@@ -111,6 +140,7 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 */
 	public T extractMin() {
 		T ans = array[1].getValue();
+		ticker.tick();
 		//
 		// There is effectively a hole at the root, at location 1 now.
 		//    Fix up the heap as described in lecture.
@@ -119,6 +149,17 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		//
 		// FIXME
 		//
+		//set it to be the biggest value in the tree, so it can swap every time during heapify
+		array[1]=array[size];
+		array[1].loc = 1;
+		this.heapify(1);
+		array[size]=null;
+		size = size - 1;
+		ticker.tick();
+		ticker.tick();
+		ticker.tick();
+		ticker.tick();
+		ticker.tick();
 		return ans;
 	}
 
@@ -134,8 +175,39 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		// As described in lecture
 		//  FIXME
 		//
+		// the last index is size
+		if(size > where*2){
+			ticker.tick();
+			int childLoc = where*2;
+			ticker.tick();
+			// if the right child exists
+			if(array[where*2+1]!=null){
+				ticker.tick();
+				if(array[where*2].getValue().compareTo(array[where*2+1].getValue()) > 0){
+					childLoc = where*2+1;
+					ticker.tick();
+				}
+			}
+			//get the lesser child
+			//if child < parent, swap parent and the lesser child
+			if(array[childLoc].getValue().compareTo(array[where].getValue()) < 0){
+				Decreaser<T> temp = array[where];
+				array[where] = array[childLoc];
+				array[childLoc] = temp;
+				array[where].loc = where;
+				array[childLoc].loc = childLoc;
+				heapify(childLoc);
+				ticker.tick();
+				ticker.tick();
+				ticker.tick();
+				ticker.tick();
+				ticker.tick();
+				ticker.tick();
+				ticker.tick();
+			}
+		}
 	}
-	
+
 	/**
 	 * Does the heap contain anything currently?
 	 * I implemented this for you.  Really, no need to thank me!
@@ -143,11 +215,11 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	public boolean isEmpty() {
 		return size == 0;
 	}
-	
+
 	//
 	// End of methods described in lecture
 	//
-	
+
 	//
 	// The methods that follow are necessary for the debugging
 	//   infrastructure.
@@ -177,11 +249,11 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	public int size() {
 		return this.size;
 	}
-	
+
 	public int capacity() {
 		return this.array.length-1;
 	}
-	
+
 
 	/**
 	 * The commented out code shows you the contents of the array,
@@ -189,11 +261,11 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 *   output.
 	 */
 	public String toString() {
-//		String ans = "";
-//		for (int i=1; i <= size; ++i) {
-//			ans = ans + i + " " + array[i] + "\n";
-//		}
-//		return ans;
+		//		String ans = "";
+		//		for (int i=1; i <= size; ++i) {
+		//			ans = ans + i + " " + array[i] + "\n";
+		//		}
+		//		return ans;
 		return HeapToStrings.toTree(this);
 	}
 
