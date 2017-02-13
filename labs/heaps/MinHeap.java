@@ -72,7 +72,6 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		array[size]=ans;
 		decrease(size);
 		ticker.tick();
-		ticker.tick();
 		return ans;
 	}
 
@@ -120,12 +119,6 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 			array[loc/2].loc = loc/2;
 			loc = loc/2;
 			ticker.tick();
-			ticker.tick();
-			ticker.tick();
-			ticker.tick();
-			ticker.tick();
-			ticker.tick();
-			ticker.tick();
 		}
 
 
@@ -140,7 +133,6 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 */
 	public T extractMin() {
 		T ans = array[1].getValue();
-		ticker.tick();
 		//
 		// There is effectively a hole at the root, at location 1 now.
 		//    Fix up the heap as described in lecture.
@@ -155,10 +147,6 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		this.heapify(1);
 		array[size]=null;
 		size = size - 1;
-		ticker.tick();
-		ticker.tick();
-		ticker.tick();
-		ticker.tick();
 		ticker.tick();
 		return ans;
 	}
@@ -177,7 +165,6 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 		//
 		// the last index is size
 		if(size > where*2){
-			ticker.tick();
 			int childLoc = where*2;
 			ticker.tick();
 			// if the right child exists
@@ -197,12 +184,6 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 				array[where].loc = where;
 				array[childLoc].loc = childLoc;
 				heapify(childLoc);
-				ticker.tick();
-				ticker.tick();
-				ticker.tick();
-				ticker.tick();
-				ticker.tick();
-				ticker.tick();
 				ticker.tick();
 			}
 		}
