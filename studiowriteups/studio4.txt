@@ -8,10 +8,10 @@ Students in your studio group:
 
     Name        Student ID (begins with a 4)
 	
-1.
-2.
-3.
-4.
+1. Yangchen Shen  439908
+2. Samuel Westerman 448425
+3. Jabari Booker 451009
+4. DahSom Kim     425321
 5.
 6.
 
@@ -19,21 +19,58 @@ Substitution
 
 
 Using substitution, prove that the solution to T(n)=T(n-1)+10 is T(n)=10n
+T(n) = T(n-1) + 10
+T(n-1) = T(n-2) + 10
+...
+T(0)=0
+After substitution, T(n) = 10n.
 
 
 
 Using substitution, show that T(n)=T(n-1)+10 is O(n-squared)
+T(n)<=k*n^2
+so T(n-1)<=k*(n-1)^2
+Substituting:
+T(n) = T(n-1) + 10 <= k*(n-1)^2 + 10 = k*n^2-2kn+k+10 <= k*n^2
 
 
 Recursion Tree Solutions
 
 1.
+T(n) = T(n-1)+2n-1 = T(n-2)+2n-3 + 2n-1 = T(n-3)+ 2n-5 + 2n-3 + 2n-1
+=...=T(0)+(2n-2n+1)+....+(2n-3)+(2n-1) = 5+ ((2n-1)+1)n/2 = 10+n^2
 
+T(n)=n^2+10
 
 2.
-
+T(n) = T(n-1)+4n-5 = T(n-2)+4(n-1)-5 + 4n - 5 = T(n-3)+4(n-2)-5 + 4(n-1)-5 + 4n - 5 
+=...=T(n-n)+4[(n-(n-1))+....(n-1)]-5n = T(0)+4(1+n-1)n/2-5n = 5+2(n^2)-5n
 
 3.
+T(n) = T(n/5)+7 
+T(n-1) = T((n-1)/5)+7
+T(n-5) = T((n-5)/5)+7
+...
+T(5) = T(1) + 7 = 35
+T(4) = 28
+T(3) = 28
+T(2) = 28
+T(1) = T(0) + 7 = 28
+T(0) = 21
 
+T(n) = 7*floor(log(n,5))+28
+
+note:
+log(n,5) means log(n) on base 5
 
 4.
+let floor(log(n,2)) = k
+T(0) = 0
+T(1) = 4T(1/2)+2*1 = 4T(0)+2 
+T(2) = 4T(2/2)+2*2 = 4T(1)+2 = 4(4T(0)+2)+2 = 4*2+2
+T(3) = 4T(3/2)+2*3 = 4T(1)+2 
+T(4) = 4T(4/2)+2*4 = 4T(2)+2 = 4(4*2+2)+2 
+...
+T(n) = 4T(n/2)+2*n = 4(4*k+...+?)+2n
+Draw recursion tree.
+T(n) = 4n^2 - 2n
