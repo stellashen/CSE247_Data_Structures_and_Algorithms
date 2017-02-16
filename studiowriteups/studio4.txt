@@ -1,7 +1,7 @@
 Studio 4 write up
 
 Your TA's name:
-
+Conner Coan
 
 
 Students in your studio group:
@@ -73,4 +73,3 @@ T(4) = 4T(4/2)+2*4 = 4T(2)+2 = 4(4*2+2)+2
 ...
 T(n) = 4T(n/2)+2*n = 4(4*k+...+?)+2n
 Draw recursion tree.
-T(n) = 4n^2 - 2n
