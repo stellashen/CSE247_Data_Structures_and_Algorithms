@@ -88,7 +88,7 @@ public class ShortestPaths {
 		//
 		// FIXME
 		while (pq.size()>0){
-			//extract min
+			//keep doing extractMin to get to the next node
 			VertexAndDist u = pq.extractMin();
 			Vertex v = u.getVertex();
 			int d = u.getDistance();
@@ -96,16 +96,16 @@ public class ShortestPaths {
 			for(Edge e: v.edgesFrom()){
 				int w = weights.get(e);
 				Vertex v2 = e.to;
-				int currentDis = map.get(v2).getValue().getDistance();
+				Decreaser<VertexAndDist> dec = map.get(v2);
+				VertexAndDist vd = dec.getValue();
+				int currentDis = vd.getDistance();
 				ticker.tick(3);
 				if (currentDis > w + d){
-					map.get(v2).decrease(map.get(v2).getValue().sameVertexNewDistance(w+d));
+					dec.decrease(vd.sameVertexNewDistance(w+d));
 					toEdge.put(v2, e);
 					ticker.tick(2);
 				}
-
 			}
-
 		}
 	}
 
