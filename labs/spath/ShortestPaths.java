@@ -30,12 +30,11 @@ import spath.VertexAndDist;
 public class ShortestPaths {
 	private final static Integer inf = Integer.MAX_VALUE;
 	private HashMap<Vertex, Decreaser<VertexAndDist>> map;
-	private HashMap<Vertex, Edge> toEdge;
+	private HashMap<Vertex, Edge> toEdge;//the edges you take to get to that vertex in a shortest path
 	private Map<Edge, Integer> weights;
 	private Vertex startVertex;
 	private final DirectedGraph g;
-	
-	
+
 	//
 	// constructor
 	//
@@ -47,24 +46,25 @@ public class ShortestPaths {
 		this.startVertex = startVertex;
 		this.g           = g;
 	}
-	
+
 	//
 	// this method does all the real work
 	//
 	public void run() {
 		Ticker ticker = new Ticker();
 		MinHeap<VertexAndDist> pq = new MinHeap<VertexAndDist>(30000, ticker);
-
+		ticker.tick();
 		//
 		// Initially all vertices are placed in the heap
 		//   infinitely far away from the start vertex
 		//
-		
+
 		for (Vertex v : g.vertices()) {
 			toEdge.put(v, null);
 			VertexAndDist a = new VertexAndDist(v, inf);
 			Decreaser<VertexAndDist> d = pq.insert(a);
 			map.put(v, d);
+			ticker.tick(4);
 		}
 
 
@@ -78,6 +78,7 @@ public class ShortestPaths {
 		// and then decrease it using the Decreaser handle
 		//
 		startVertDist.decrease(startVertDist.getValue().sameVertexNewDistance(0));
+		ticker.tick(2);
 
 
 		//
@@ -86,9 +87,29 @@ public class ShortestPaths {
 		//   and act upon them as instructed in class and the text.
 		//
 		// FIXME
+		while (pq.size()>0){
+			//extract min
+			VertexAndDist u = pq.extractMin();
+			Vertex v = u.getVertex();
+			int d = u.getDistance();
+			ticker.tick(3);
+			for(Edge e: v.edgesFrom()){
+				int w = weights.get(e);
+				Vertex v2 = e.to;
+				int currentDis = map.get(v2).getValue().getDistance();
+				ticker.tick(3);
+				if (currentDis > w + d){
+					map.get(v2).decrease(map.get(v2).getValue().sameVertexNewDistance(w+d));
+					toEdge.put(v2, e);
+					ticker.tick(2);
+				}
+
+			}
+
+		}
 	}
 
-	
+
 	/**
 	 * Return a List of Edges forming a shortest path from the
 	 *    startVertex to the specified endVertex.  Do this by tracing
@@ -105,10 +126,16 @@ public class ShortestPaths {
 		//
 		// FIXME
 		//
+		Edge e = toEdge.get(endVertex);
+		path.addFirst(e);
+		while(e.from!=startVertex){
+		e = toEdge.get(e.from);
+		path.addFirst(e);
+		}
 
 		return path;
 	}
-	
+
 	/**
 	 * Return the length of all shortest paths.  This method
 	 *    is completed for you, using your solution to returnPath.
@@ -121,8 +148,8 @@ public class ShortestPaths {
 		for(Edge e : path) {
 			pathValue += weights.get(e);
 		}
-		
+
 		return pathValue;
-		
+
 	}
 }
