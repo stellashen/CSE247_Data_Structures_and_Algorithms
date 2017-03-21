@@ -129,8 +129,8 @@ public class ShortestPaths {
 		Edge e = toEdge.get(endVertex);
 		path.addFirst(e);
 		while(e.from!=startVertex){
-		e = toEdge.get(e.from);
-		path.addFirst(e);
+			e = toEdge.get(e.from);
+			path.addFirst(e);
 		}
 
 		return path;
