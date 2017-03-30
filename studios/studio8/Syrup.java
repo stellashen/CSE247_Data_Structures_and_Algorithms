@@ -15,7 +15,13 @@ public class Syrup {
 	}
 
 	public int hashCode(){
-		return rand.nextInt();
+		//return rand.nextInt();
+		double sum = 0;
+		for(int i=0; i<brand.length();i++){
+			sum = sum + (double)brand.charAt(i);
+		}
+		int hash = (int)(31*density+17*sum);
+		return hash;
 	}
 
 	@Override

@@ -15,9 +15,15 @@ public class Pancake {
 
 	@Override
 	public int hashCode(){
-		int hash = radius;
+//		int hash = radius;
+//		if (wheat){
+//			hash = hash + 5;
+//		}
+//		return hash;
+		//create your own:
+		int hash = radius;//radius is always positive
 		if (wheat){
-			hash = hash + 5;
+			hash = -hash;
 		}
 		return hash;
 	}
