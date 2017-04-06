@@ -12,6 +12,8 @@ import java.util.SortedSet;
 
 import timing.Ticker;
 
+//note: the printing output is not vertical
+//instead, read from left to right (as tree top to bottom)
 public class BST<E> implements SortedSet<E> {
 	
 	private TreeNode<E> root;
@@ -25,6 +27,7 @@ public class BST<E> implements SortedSet<E> {
 	public static void main(String[] args) {
 		BST<String> lonely = new BST<String>(new Ticker());
 		lonely.add("sad");
+		lonely.add("zangry");
 		lonely.add("happy");
 		System.out.println("lonely tree \n" + lonely.dumpTree());
 		BST<Integer> t = new BST<Integer>(new Ticker()); // here, E is Integer
